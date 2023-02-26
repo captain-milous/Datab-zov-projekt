@@ -18,8 +18,8 @@ namespace Databázový_projekt
 
         public Zakaznik(string email, string heslo) : base(email, heslo)
         {
-            Jmeno = "NoName";
-            Prijmeni = "NoSurname";
+            Jmeno = "Bez Jména";
+            Prijmeni = "Bez Přijmení";
             DatumNarozeni = DateTime.Today; 
         }
 
