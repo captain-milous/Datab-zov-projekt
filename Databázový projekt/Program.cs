@@ -12,8 +12,16 @@ namespace Databázový_projekt
             Console.WriteLine("Autor: Miloš Tesař C3b");
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine();
 
             MainMenu();
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Aplikace byla ukončena.");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------");
         }
     }
 }

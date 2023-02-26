@@ -59,10 +59,71 @@ namespace Databázový_projekt
             }
         }
 
+        #region Registration
         public static void Registration()
+        {
+            int input = 0;
+            bool run = true;
+            int strike = 0;
+            int maxStrike = 3;
+            while (run)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Registrovat\n1 - Zákazníka\n2 - Prodejce(Obchod)\n3 - Zpět do Hlavní nabídky");
+                Console.Write("Vyberte možnost: ");
+                try
+                {
+                    input = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Zadaná Hodnota musí být integer!");
+                    input = 0;
+                }
+                switch (input)
+                {
+                    case 1:
+                        ZakaznikRegistration();
+                        run = false;
+                        break;
+                    case 2:
+                        ObchodRegistration();
+                        run = false;
+                        break;
+                    case 3:
+                        run = false;
+                        break;
+                    default:
+                        Console.WriteLine();
+                        strike++;
+                        if (strike < maxStrike)
+                        {
+                            Console.WriteLine("Máte " + strike + " striků, jestli dosáhnete " + maxStrike + " striků aplikace se automaticky ukončí.");
+                            Console.WriteLine("Vyberte celé číslo z nabídky..");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Dosáhli jste " + strike + " striků. Aplikace se teď automaticky ukončí.");
+                            run = false;
+                        }
+                        break;
+                }
+
+            }
+        }
+
+        public static void ZakaznikRegistration()
         {
 
         }
+
+        public static void ObchodRegistration()
+        {
+
+        }
+        #endregion
+
+        #region Log In Methods
         public static void ChooseLogIn() 
         {
             int input = 0;
@@ -87,9 +148,11 @@ namespace Databázový_projekt
                 {
                     case 1:
                         ZakaznikLogIn();
+                        run = false;
                         break;
                     case 2:
                         ObchodLogIn();
+                        run = false;
                         break;
                     case 3:
                         run = false;
@@ -122,7 +185,7 @@ namespace Databázový_projekt
         {
 
         }
-
+        #endregion
 
     }
 }
