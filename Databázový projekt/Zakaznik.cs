@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Databázový_projekt
 {
-    internal class Zakaznik : User
+    public class Zakaznik : User
     {
         private string jmeno;
         private string prijmeni;
