@@ -15,7 +15,7 @@ namespace Databázový_projekt
         private Obchod obchod;
 
         public string Nazev { get { return nazev; } set { nazev = value; } }
-        public double Cena { get { return cena; } set { cena = value; } }
+        public double Cena { get { return cena; } set { cena = Math.Round(value, 2); } }
         public string Popis { get { return popis; } set { popis = value; } }
         public int PocetKusu { get { return pocetKusu; } set { pocetKusu = value; } }
         public Obchod Obchod { get { return obchod; } set { obchod = value; } }
@@ -23,7 +23,7 @@ namespace Databázový_projekt
         public Polozka(string nazev, double cena, Obchod obchod)
         {
             Nazev = nazev;
-            Cena = cena;
+            Cena = Math.Round(cena, 2);
             Popis = "Bez Popisu";
             PocetKusu = 0;
             Obchod = obchod;
