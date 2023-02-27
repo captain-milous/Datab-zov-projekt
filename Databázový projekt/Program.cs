@@ -7,22 +7,19 @@ namespace Databázový_projekt
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("----------------------------------------------------------------------------------");
-            Console.WriteLine();
+            string lajna = "\n----------------------------------------------------------------------------------\n";
+            Console.WriteLine(lajna);
             Console.WriteLine("Vítejte v aplikaci Databázový projekt!");
             Console.WriteLine("Autor: Miloš Tesař C3b");
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------------------------------------------------");
-            Console.WriteLine();
+            Console.WriteLine(lajna);
             Console.WriteLine();
 
             MainMenu();
 
             Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine(lajna);
             Console.WriteLine("Aplikace byla ukončena.");
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------------------------------------------------");
+            Console.WriteLine(lajna);
         }
     }
 }

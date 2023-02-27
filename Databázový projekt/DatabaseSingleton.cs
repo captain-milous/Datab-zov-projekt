@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,8 +35,27 @@ namespace Databázový_projekt
             }
             return conn;
         }
+        public static void InsertIntoTable(Zakaznik z) 
+        { 
+            conn = GetInstance();
+            try
+            {
+                string sql = "INSERT INTO zakaznik (`ID`, `email`, `heslo`, `adresa`, `jmeno`, `prijmeni`, `datum_narozeni`) " +
+                    "VALUES (NULL, '"+z.Email+"', '"+z.Heslo+"', '"+z.Adresa+"', '"+z.Jmeno+"', '"+z.Prijmeni+"', '"+z.DatumNarozeni+"');";
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-        public static void CloseConnection()
+        }
+        public static void InsertIntoTable(Obchod o)
+        {
+        }
+
+            public static void CloseConnection()
         {
             try
             {
