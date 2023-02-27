@@ -8,5 +8,10 @@ namespace Databázový_projekt
 {
     public static class StaticImportMethods
     {
+        public static List<Zakaznik> ImportZakaznikList()
+        {
+
+            return new List<Zakaznik>();
+        }
     }
 }
