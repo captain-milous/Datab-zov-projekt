@@ -11,24 +11,28 @@ namespace Databázový_projekt
 {
     public class DatabaseSingleton
     {
-        private static SqlConnection conn = null;
+        private static MySqlConnection conn = null;
         private DatabaseSingleton()
         {
 
         }
-        public static SqlConnection GetInstance()
+        public static MySqlConnection GetInstance()
         {
             if (conn == null)
             {
-                SqlConnectionStringBuilder consStringBuilder = new SqlConnectionStringBuilder();
-                consStringBuilder.UserID = ReadSetting("Pwd");
-                consStringBuilder.Password = ReadSetting("Uid");
-                consStringBuilder.InitialCatalog = ReadSetting("Database");
-                consStringBuilder.DataSource = ReadSetting("Server");
-                consStringBuilder.ConnectTimeout = 30;
-                conn = new SqlConnection(consStringBuilder.ConnectionString);
-                //Console.WriteLine(consStringBuilder.ConnectionString);
-                conn.Open();
+                string server = "Server=" + ReadSetting("Server") + ";";
+                string database = "Database=" + ReadSetting("Database") + ";";
+                string uid = "Uid=" + ReadSetting("Uid") + ";";
+                string pwd = "Pwd=" + ReadSetting("Pwd") + ";";
+                try
+                {
+                    conn = new MySqlConnection(server + database + uid + pwd);
+                    conn.Open();
+                } 
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }                            
             }
             return conn;
         }

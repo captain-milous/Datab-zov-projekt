@@ -16,10 +16,6 @@ namespace Databázový_projekt
             Console.WriteLine();
             Console.WriteLine();
 
-            MySqlConnection cnn = new MySqlConnection("Server=localhost;" +
-                                          "Database=testCeSharp;" +
-                                          "Uid=captain;" +
-                                          "Pwd=Vaseksmrdi69;");
             MainMenu();
 
             Console.WriteLine();
