@@ -9,10 +9,12 @@ namespace Databázový_projekt
     public class Objednavka
     {
         private List<Polozka> souhrnPolozek;
+        private Zakaznik zakaznik;
         private int? sleva;
-        private double celkovaCena;
+        private bool doruceniNaAdresu;
 
-        public List<Polozka> SouhrnPolozek { get { return souhrnPolozek; } set { souhrnPolozek = value; GetCelkovaCena(); } }
+        public List<Polozka> SouhrnPolozek { get { return souhrnPolozek; } set { souhrnPolozek = value; } }
+        public Zakaznik Kupujici { get { return zakaznik; } set { zakaznik = value; } }
         public int? Sleva { 
             get { return sleva; }
             set {
@@ -24,16 +26,17 @@ namespace Databázový_projekt
                 {
                     sleva = null;
                 }
-                GetCelkovaCena(); 
             } 
         }
-        public double CelkovaCena { get { return celkovaCena; } }
+        public bool DoruceniNaAdresu { get { return doruceniNaAdresu; } set { doruceniNaAdresu = value; } }
+        
 
-        public Objednavka()
+        public Objednavka(Zakaznik zak)
         {
+            Kupujici = zak; 
             SouhrnPolozek = new List<Polozka>();
             Sleva = null;
-            celkovaCena = 0;
+            doruceniNaAdresu = false;
         }
 
         public override string ToString()
@@ -48,33 +51,15 @@ namespace Databázový_projekt
                 }
                 if (sleva != null)
                 {
-                    double discount = Math.Round(CelkovaCena / 100 * Sleva.Value, 2);
-                    output += "\nSleva: " + Sleva + "%   (" + discount + " Kč)\n";
+                    output += "\nSleva: " + Sleva + "%\n";
                 }
-                output = output + "\nCena Celkem: " + CelkovaCena + " Kč";
             }           
             return output;
-        }
-
-        public void GetCelkovaCena()
-        {
-            double output = 0;
-            for(int i = 0; i < SouhrnPolozek.Count(); i++)
-            {
-                output = output + SouhrnPolozek[i].Cena;
-            }
-            if(sleva != null)
-            {
-                double discount = Math.Round(output / 100 * Sleva.Value, 2);
-                output = output - discount;
-            }
-            this.celkovaCena = Math.Round(output, 2);
         }
 
         public void AddPolozka(Polozka polozka)
         {
             SouhrnPolozek.Add(polozka);
-            GetCelkovaCena();
         }
     }
 }
