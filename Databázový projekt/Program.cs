@@ -13,7 +13,7 @@ namespace Databázový_projekt
             Console.WriteLine(lajna);
             Console.WriteLine();
 
-            LogInMethods.MainMenu();
+            MainMenu.Menu();
             
             #region Testování
 
