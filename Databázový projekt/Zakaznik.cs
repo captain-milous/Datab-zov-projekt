@@ -10,11 +10,11 @@ namespace Databázový_projekt
     {
         private string jmeno;
         private string prijmeni;
-        private DateTime datumNarozeni;
+        private DateTime? datumNarozeni;
 
         public string Jmeno { get { return jmeno; } set { jmeno = value; } }
         public string Prijmeni { get { return prijmeni; } set { prijmeni = value; } }
-        public DateTime DatumNarozeni { get { return datumNarozeni; } set { datumNarozeni = value; } }
+        public DateTime? DatumNarozeni { get { return datumNarozeni; } set { datumNarozeni = value; } }
 
         public Zakaznik(string email, string heslo) : base(email, heslo)
         {
@@ -23,7 +23,7 @@ namespace Databázový_projekt
             DatumNarozeni = DateTime.Today; 
         }
 
-        public Zakaznik(string email, string heslo, string adresa, string jmeno, string prijmeni, DateTime datumNarozeni) : base(email, heslo, adresa)
+        public Zakaznik(string email, string heslo, string adresa, string jmeno, string prijmeni, DateTime? datumNarozeni) : base(email, heslo, adresa)
         {
             Jmeno = jmeno;
             Prijmeni = prijmeni;

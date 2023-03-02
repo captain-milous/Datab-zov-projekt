@@ -19,7 +19,7 @@ namespace Databázový_projekt
             Nazev = "Bez Názvu";
             Web = "Bez Webu";
         }
-        public Obchod(string email, string heslo, string nazev, string web) : base(email, heslo)
+        public Obchod(string email, string heslo, string adresa, string nazev, string web) : base(email, heslo, adresa)
         {
             Nazev = nazev;
             Web = web;

@@ -35,6 +35,9 @@ namespace Databázový_projekt
             }
             return conn;
         }
+
+        #region Insert Into Tables
+        // ještě v progresu
         public static void InsertIntoTable(Zakaznik z) 
         { 
             conn = GetInstance();
@@ -111,6 +114,54 @@ namespace Databázový_projekt
                 Console.WriteLine(ex.Message);
             }
         }
+        #endregion
+        #region Get From Tables
+        //Ještě v progressu
+        public static List<Zakaznik> GetValuesFromZakaznik()
+        {
+            conn = GetInstance();
+            List<Zakaznik> zakaznici = new List<Zakaznik>();
+            try
+            {
+                string sql = "SELECT * FROM zakaznik";
+                using var cmd = new MySqlCommand(sql, conn);
+                using MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5) + " " + rdr.GetString(6));
+                    zakaznici.Add(new Zakaznik(rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), null ));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return zakaznici;
+
+        }
+        public static List<Obchod> GetValuesFromObchod()
+        {
+            conn = GetInstance();
+            List<Obchod> obchody = new List<Obchod>();
+            try
+            {
+                string sql = "SELECT * FROM zakaznik";
+                using var cmd = new MySqlCommand(sql, conn);
+                using MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5));
+                    obchody.Add(new Obchod(rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetString(5)));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return obchody;
+        }
+
+        #endregion
 
         public static void CloseConnection()
         {
@@ -135,5 +186,7 @@ namespace Databázový_projekt
             string result = appSettings[key] ?? "Not Found";
             return result;
         }
+
+
     }
 }

@@ -16,6 +16,19 @@ namespace Databázový_projekt
 
             MainMenu();
 
+            #region Testování
+
+            Console.WriteLine();
+            List<Zakaznik> zakaznici = DatabaseSingleton.GetValuesFromZakaznik();
+            Console.WriteLine();
+            Console.WriteLine(zakaznici.ToString()); 
+            Console.WriteLine();
+            List<Obchod> obchody = DatabaseSingleton.GetValuesFromObchod();
+            Console.WriteLine();
+            Console.WriteLine(obchody.ToString());
+
+            #endregion
+
             Console.WriteLine();
             Console.WriteLine(lajna);
             Console.WriteLine("Aplikace byla ukončena.");
