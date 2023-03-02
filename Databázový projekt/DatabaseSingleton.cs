@@ -53,9 +53,66 @@ namespace Databázový_projekt
         }
         public static void InsertIntoTable(Obchod o)
         {
+            conn = GetInstance();
+            try
+            {
+                string sql = "INSERT INTO obchod (`ID`, `email`, `heslo`, `adresa`, `nazev`, `web`) " +
+                    "VALUES (NULL, '" + o.Email + "', '" + o.Heslo + "', '" + o.Adresa + "', '"+ o.Nazev +"', '"+ o.Web +"');";
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public static void InsertIntoTable(Polozka p)
+        {
+            conn = GetInstance();
+            try
+            {
+                string sql = "INSERT INTO polozka (`ID`, `nazev`, `cena`, `popis`, `pocet_kusu`, `obchod_id`) " +
+                    "VALUES (NULL, '" + p.Nazev + "', '" + p.Cena + "', '"+ p.Popis +"', '"+ p.PocetKusu +"', '" + p.Obchod +"');";
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public static void InsertIntoTable(Objednavka o)
+        {
+            conn = GetInstance();
+            try
+            {
+                string sql = "INSERT INTO `objednavka` (`ID`, `zakaznik_id`, `polozka_id`, `sleva`, `doruceni`) " +
+                    "VALUES (NULL, '"+ o.Kupujici +"', '"+ o.SouhrnPolozek + "', '"+o.Sleva+"', '"+o.DoruceniNaAdresu+"');";
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public static void InsertIntoTable(Nakup n)
+        {
+            conn = GetInstance();
+            try
+            {
+                string sql = "INSERT INTO `nakup` (`ID`, `objednavka_id`, `obchod_id`, `datum_nakupu`, `clekova_cena`) " +
+                    "VALUES (NULL, '"+ n.Objednavka +"', '"+n.Obchod+"', '"+n.DatumNakupu+"', '"+n.CelkovaCena+"');";
+                using var cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
-            public static void CloseConnection()
+        public static void CloseConnection()
         {
             try
             {
