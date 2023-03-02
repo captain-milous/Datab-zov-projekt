@@ -10,6 +10,10 @@ namespace Databázový_projekt
 {
     public static class StaticLogInMethods
     {
+
+        private static List<Zakaznik> zakaznici = new List<Zakaznik>();
+        private static List<Obchod> obchody = new List<Obchod>();
+
         public static void MainMenu() 
         {
             int input = 0;
@@ -178,14 +182,91 @@ namespace Databázový_projekt
 
         public static void ZakaznikLogIn()
         {
+            zakaznici = DatabaseSingleton.GetValuesFromZakaznik();
+            int input = 0;
+            bool run = true;
+            int strike = 0;
+            int maxStrike = 3;
+            while (run)
+            {
+                Console.WriteLine();
+                Console.Write("Zadejte své přihlašovací email: ");
+                string username = Console.ReadLine();
+                Console.Write("Zadejte své přihlašovací heslo: ");
+                string password = Console.ReadLine();
+                Zakaznik user = zakaznici.FirstOrDefault(u => u.Email == username && u.Heslo == password);
+                if (user != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Vitejte, " + user.Jmeno + " " + user.Prijmeni);
+                    
+                    // Spuštění Menu pro obchody
 
+                    run = false;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Neplatné přihlašovací email nebo heslo.");
+                    strike++;
+                    if (strike < maxStrike)
+                    {
+                        Console.WriteLine("Máte " + strike + " striků, jestli dosáhnete " + maxStrike + " striků aplikace vás vrátí do hlavní nabídky.");
+                        Console.WriteLine("Zkuste to prosím znovu.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dosáhli jste " + strike + " striků. ");
+                        run = false;
+                    }
+                }
+            }
         }
+        
 
         public static void ObchodLogIn()
         {
+            obchody = DatabaseSingleton.GetValuesFromObchod();
+            int input = 0;
+            bool run = true;
+            int strike = 0;
+            int maxStrike = 3;
+            while (run)
+            {
+                Console.WriteLine();
+                Console.Write("Zadejte své přihlašovací email: ");
+                string username = Console.ReadLine();
+                Console.Write("Zadejte své přihlašovací heslo: ");
+                string password = Console.ReadLine();
+                Obchod user = obchody.FirstOrDefault(u => u.Email == username && u.Heslo == password);
+                if (user != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Vitejte, " + user.Nazev);
 
+                    // Spuštění zakaznického Menu
+
+                    run = false;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Neplatné přihlašovací email nebo heslo.");
+                    strike++;
+                    if (strike < maxStrike)
+                    {
+                        Console.WriteLine("Máte " + strike + " striků, jestli dosáhnete " + maxStrike + " striků aplikace vás vrátí do hlavní nabídky.");
+                        Console.WriteLine("Zkuste to prosím znovu.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dosáhli jste " + strike + " striků. ");
+                        run = false;
+                    }
+                }
+            }
         }
-        #endregion
+    #endregion
 
     }
 }

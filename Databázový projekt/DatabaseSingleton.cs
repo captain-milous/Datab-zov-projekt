@@ -128,7 +128,7 @@ namespace Databázový_projekt
                 using MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5) + " " + rdr.GetString(6));
+                    // Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5) + " " + rdr.GetString(6));
                     zakaznici.Add(new Zakaznik(rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetString(5), null ));
                 }
             }
@@ -145,12 +145,12 @@ namespace Databázový_projekt
             List<Obchod> obchody = new List<Obchod>();
             try
             {
-                string sql = "SELECT * FROM zakaznik";
+                string sql = "SELECT * FROM obchod";
                 using var cmd = new MySqlCommand(sql, conn);
                 using MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5));
+                    // Console.WriteLine("{0}", rdr.GetString(1) + " " + rdr.GetString(2) + " " + rdr.GetString(3) + " " + rdr.GetString(4) + " " + rdr.GetString(5));
                     obchody.Add(new Obchod(rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4), rdr.GetString(5)));
                 }
             }
