@@ -25,7 +25,9 @@ namespace Databázový_projekt
             DatumNakupu = DateTime.Today;
             GetCelkovaCena();
         }
-
+        /// <summary>
+        /// Změní celkovou cenu
+        /// </summary>
         public void GetCelkovaCena()
         {
             double output = 0;

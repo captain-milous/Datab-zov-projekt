@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Databázový_projekt.StaticImportMethods;
-using static Databázový_projekt.StaticExportMethods;
 
 namespace Databázový_projekt
 {
-    public static class StaticLogInMethods
+    public class LogInMethods
     {
-
         private static List<Zakaznik> zakaznici = new List<Zakaznik>();
         private static List<Obchod> obchody = new List<Obchod>();
 
+        private LogInMethods()
+        {
+
+        }
+        /// <summary>
+        /// Hlavní nabídka
+        /// </summary>
         public static void MainMenu() 
         {
             int input = 0;
@@ -64,6 +68,9 @@ namespace Databázový_projekt
         }
 
         #region Registration
+        /// <summary>
+        /// Výběr Registrace (Zakazník/Obchod)
+        /// </summary>
         public static void Registration()
         {
             int input = 0;
@@ -115,12 +122,16 @@ namespace Databázový_projekt
 
             }
         }
-
+        /// <summary>
+        /// Registrace Zakaznika
+        /// </summary>
         public static void ZakaznikRegistration()
         {
 
         }
-
+        /// <summary>
+        /// Registrace Obchodu
+        /// </summary>
         public static void ObchodRegistration()
         {
 
@@ -128,6 +139,9 @@ namespace Databázový_projekt
         #endregion
 
         #region Log In Methods
+        /// <summary>
+        /// Výběr Přihlášení (Zákazník/Obchod)
+        /// </summary>
         public static void ChooseLogIn() 
         {
             int input = 0;
@@ -179,7 +193,9 @@ namespace Databázový_projekt
 
             }
         }
-
+        /// <summary>
+        /// Log In Zákazníka
+        /// </summary>
         public static void ZakaznikLogIn()
         {
             zakaznici = DatabaseSingleton.GetValuesFromZakaznik();
@@ -199,8 +215,8 @@ namespace Databázový_projekt
                 {
                     Console.WriteLine();
                     Console.WriteLine("Vitejte, " + user.Jmeno + " " + user.Prijmeni);
-                    
-                    // Spuštění Menu pro obchody
+
+                    ZakaznikMenu.Menu(user);
 
                     run = false;
                 }
@@ -222,8 +238,9 @@ namespace Databázový_projekt
                 }
             }
         }
-        
-
+        /// <summary>
+        /// Log In Obchodu
+        /// </summary>
         public static void ObchodLogIn()
         {
             obchody = DatabaseSingleton.GetValuesFromObchod();
@@ -244,7 +261,7 @@ namespace Databázový_projekt
                     Console.WriteLine();
                     Console.WriteLine("Vitejte, " + user.Nazev);
 
-                    // Spuštění zakaznického Menu
+                    ObchodMenu.Menu(user);
 
                     run = false;
                 }
@@ -266,7 +283,7 @@ namespace Databázový_projekt
                 }
             }
         }
-    #endregion
+        #endregion
 
     }
 }

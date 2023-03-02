@@ -30,7 +30,10 @@ namespace Databázový_projekt
         }
         public bool DoruceniNaAdresu { get { return doruceniNaAdresu; } set { doruceniNaAdresu = value; } }
         
-
+        /// <summary>
+        /// Nová Objednavka
+        /// </summary>
+        /// <param name="zak"></param>
         public Objednavka(Zakaznik zak)
         {
             Kupujici = zak; 
@@ -56,7 +59,10 @@ namespace Databázový_projekt
             }           
             return output;
         }
-
+        /// <summary>
+        /// Přidá položku do listu položek
+        /// </summary>
+        /// <param name="polozka">Položka</param>
         public void AddPolozka(Polozka polozka)
         {
             SouhrnPolozek.Add(polozka);

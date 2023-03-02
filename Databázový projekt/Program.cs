@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using static Databázový_projekt.StaticLogInMethods;
+﻿// using MySql.Data.MySqlClient;
 
 namespace Databázový_projekt
 {
@@ -14,12 +13,12 @@ namespace Databázový_projekt
             Console.WriteLine(lajna);
             Console.WriteLine();
 
-            MainMenu();
-
+            LogInMethods.MainMenu();
+            
             #region Testování
 
-            //DatabaseSingleton.InsertIntoTable(new Zakaznik("test3@user.com", "ZajimaveHeslo"));
-            //DatabaseSingleton.InsertIntoTable(new Obchod("test2@obchod.com", "ZajimaveHeslo"));
+            // DatabaseSingleton.InsertIntoTable(new Zakaznik("test3@user.com", "ZajimaveHeslo"));
+            // DatabaseSingleton.InsertIntoTable(new Obchod("test2@obchod.com", "ZajimaveHeslo"));
 
             /*
             Console.WriteLine();

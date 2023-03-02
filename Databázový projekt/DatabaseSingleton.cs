@@ -15,6 +15,10 @@ namespace Databázový_projekt
         {
 
         }
+        /// <summary>
+        /// Připojí se k databázi (pokud to jde)
+        /// </summary>
+        /// <returns>MySqlConnection conn</returns>
         public static MySqlConnection GetInstance()
         {
             if (conn == null)
@@ -38,6 +42,10 @@ namespace Databázový_projekt
 
         #region Insert Into Tables
         // ještě v progresu
+        /// <summary>
+        /// Instert into Zakaznik table
+        /// </summary>
+        /// <param name="z">Zakaznik</param>
         public static void InsertIntoTable(Zakaznik z) 
         { 
             conn = GetInstance();
@@ -54,6 +62,10 @@ namespace Databázový_projekt
             }
 
         }
+        /// <summary>
+        /// Instert into Obchod table
+        /// </summary>
+        /// <param name="o">Obchod</param>
         public static void InsertIntoTable(Obchod o)
         {
             conn = GetInstance();
@@ -69,6 +81,10 @@ namespace Databázový_projekt
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// Instert into Polozka table
+        /// </summary>
+        /// <param name="p">Polozka</param>
         public static void InsertIntoTable(Polozka p)
         {
             conn = GetInstance();
@@ -84,6 +100,10 @@ namespace Databázový_projekt
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// Instert into Objednavka table
+        /// </summary>
+        /// <param name="o">Objednavka</param>
         public static void InsertIntoTable(Objednavka o)
         {
             conn = GetInstance();
@@ -99,6 +119,10 @@ namespace Databázový_projekt
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// Inster into Nakup table
+        /// </summary>
+        /// <param name="n">Nakup</param>
         public static void InsertIntoTable(Nakup n)
         {
             conn = GetInstance();
@@ -117,6 +141,10 @@ namespace Databázový_projekt
         #endregion
         #region Get From Tables
         //Ještě v progressu
+        /// <summary>
+        /// Vrátí List zakazníků z databáze
+        /// </summary>
+        /// <returns>List<Zakaznik></returns>
         public static List<Zakaznik> GetValuesFromZakaznik()
         {
             conn = GetInstance();
@@ -139,6 +167,10 @@ namespace Databázový_projekt
             return zakaznici;
 
         }
+        /// <summary>
+        /// Vrátí List obchodů z databáze
+        /// </summary>
+        /// <returns>List<Obchod></returns>
         public static List<Obchod> GetValuesFromObchod()
         {
             conn = GetInstance();
@@ -162,7 +194,9 @@ namespace Databázový_projekt
         }
 
         #endregion
-
+        /// <summary>
+        /// Uzavře spojení s databazí
+        /// </summary>
         public static void CloseConnection()
         {
             try
@@ -179,7 +213,11 @@ namespace Databázový_projekt
                 conn = null;
             }
         }
-
+        /// <summary>
+        /// Přečtení proměnných z App.config
+        /// </summary>
+        /// <param name="key">Klíčové slovo</param>
+        /// <returns>Hodnotu klíče</returns>
         private static string ReadSetting(string key)
         {
             var appSettings = ConfigurationManager.AppSettings;
