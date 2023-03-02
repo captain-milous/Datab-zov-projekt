@@ -14,6 +14,11 @@ namespace Databázový_projekt
         public string Nazev { get { return nazev; } set { nazev = value; } }
         public string Web { get { return web; } set { web = value; } }
 
+        public Obchod() : base() 
+        {
+            Nazev = "Bez Názvu";
+            Web = "Bez Webu";
+        }
         public Obchod(string email, string heslo) : base(email, heslo)
         {
             Nazev = "Bez Názvu";
@@ -24,5 +29,11 @@ namespace Databázový_projekt
             Nazev = nazev;
             Web = web;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 }

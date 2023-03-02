@@ -16,6 +16,12 @@ namespace Databázový_projekt
         public string Prijmeni { get { return prijmeni; } set { prijmeni = value; } }
         public DateTime? DatumNarozeni { get { return datumNarozeni; } set { datumNarozeni = value; } }
 
+        public Zakaznik() : base()
+        {
+            Jmeno = "Bez Jména";
+            Prijmeni = "Bez Přijmení";
+            DatumNarozeni = DateTime.Today;
+        }
         public Zakaznik(string email, string heslo) : base(email, heslo)
         {
             Jmeno = "Bez Jména";

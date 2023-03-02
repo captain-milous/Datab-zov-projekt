@@ -16,6 +16,12 @@ namespace Databázový_projekt
         public string Heslo { get { return heslo; } set { heslo = value; } }
         public string Adresa { get { return adresa; } set { adresa = value; } }
 
+        public User() 
+        {
+            Email = "Neuvedeno";
+            Heslo = "Neuvedeno";
+            Adresa = "Neuvedena";
+        }   
         public User(string email, string heslo)
         {
             Email = email;
