@@ -16,7 +16,7 @@ namespace Databázový_projekt
         /// Menu pro Obchod
         /// </summary>
         /// <param name="user">Obchod, který se přihlasil</param>
-        public static void Menu(Zakaznik user)
+        public static void Menu(Obchod user)
         {
             int input = 0;
             bool run = true;
